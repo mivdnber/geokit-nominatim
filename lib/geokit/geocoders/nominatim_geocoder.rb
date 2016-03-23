@@ -2,7 +2,7 @@ class Geokit::Geocoders::NominatimGeocoder < Geokit::Geocoders::Geocoder
 
   VERSION = "1.0.1"
   PLACE_KEYS = %W{city state postcode country country_code house_number house
-                  hamlet}
+                  hamlet }
   PROVIDER = 'nominatim'
 
   class << self
@@ -61,6 +61,11 @@ class Geokit::Geocoders::NominatimGeocoder < Geokit::Geocoders::Geocoder
     res.city = elements['city'] || elements['hamlet']
     res.state = elements['state']
     res.street_number = elements['house_number'] || elements['house']
+
+    unless attrs['boundingbox'].nil?
+      n, s, w, e = attrs['boundingbox'].split(',')
+      res.suggested_bounds = Geokit::Bounds.normalize([n.to_f, e.to_f], [s.to_f, w.to_f])
+    end
     res.success = true
   end
 
