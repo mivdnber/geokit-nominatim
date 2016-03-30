@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "geokit-nominatim"
-  s.version     = "1.0.1"
+  s.version     = "1.1"
   s.authors     = ["Andrew Williams"]
   s.email       = ["sobakasu@gmail.com"]
   s.homepage    = "http://github.com/sobakasu/geokit-nominatim"
