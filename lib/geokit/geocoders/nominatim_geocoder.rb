@@ -13,7 +13,7 @@ class Geokit::Geocoders::NominatimGeocoder < Geokit::Geocoders::Geocoder
     # get server address
     server = options[:server] || self.server
     raise "server required" unless server
-    server = "http://#{server}" unless server.match(/^http:/)
+    server = "https://#{server}" unless server.match(/^http:/) or server.match(/^https:/)
 
     # construct response
     res = Geokit::GeoLoc.new
